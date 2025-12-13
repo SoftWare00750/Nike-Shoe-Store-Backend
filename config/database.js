@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
+  const client = env('DATABASE_CLIENT', 'postgres');
 
   const connections = {
     mysql: {
@@ -34,17 +34,9 @@ module.exports = ({ env }) => {
         database: env('DATABASE_NAME', 'shoe_store'),
         user: env('DATABASE_USERNAME', 'shoe_store_user'),
         password: env('DATABASE_PASSWORD', 'Damimi7175'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          key: env('DATABASE_SSL_KEY', true),
-          cert: env('DATABASE_SSL_CERT', undefined),
-          ca: env('DATABASE_SSL_CA', undefined),
-          capath: env('DATABASE_SSL_CAPATH', undefined),
-          cipher: env('DATABASE_SSL_CIPHER', undefined),
-          rejectUnauthorized: env.bool(
-            'DATABASE_SSL_REJECT_UNAUTHORIZED',
-            true
-          ),
-        },
+        ssl: env.bool('DATABASE_SSL', false) ? {
+  rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', false),
+} : false,
         schema: env('DATABASE_SCHEMA', 'public'),
       },
       pool: { 
