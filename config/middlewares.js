@@ -6,20 +6,18 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:', 'http://localhost:1337'],
           'img-src': [
-            "'self'", 
-            'data:', 
-            'blob:', 
+            "'self'",
+            'data:',
+            'blob:',
             'res.cloudinary.com',
-            'dl.airtable.com'
           ],
           'media-src': [
-            "'self'", 
-            'data:', 
-            'blob:', 
+            "'self'",
+            'data:',
+            'blob:',
             'res.cloudinary.com',
-            'dl.airtable.com'
           ],
           upgradeInsecureRequests: null,
         },
@@ -30,11 +28,7 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: [
-        'http://localhost:3000',
-        'https://your-frontend.vercel.app',
-        // Add your Vercel production URL here
-      ],
+      origin: ['*'], // Allow all for now
       credentials: true,
     },
   },
