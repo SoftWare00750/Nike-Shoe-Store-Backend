@@ -10,6 +10,8 @@ module.exports = ({ env }) => ({
       salt: env('TRANSFER_TOKEN_SALT'),
     },
   },
-  url: '/admin', // Force admin to be at /admin
+  url: '/admin',
   autoOpen: false,
+  // Force admin to use production URL
+  serveAdminPanel: env.bool('SERVE_ADMIN', true),
 });
