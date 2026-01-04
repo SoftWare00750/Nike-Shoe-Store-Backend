@@ -24,14 +24,18 @@ module.exports = [
       },
     },
   },
-  {
-    name: 'strapi::cors',
-    config: {
-      enabled: true,
-      origin: ['*'], // Allow all for now
-      credentials: true,
-    },
+ {
+  name: 'strapi::cors',
+  config: {
+    enabled: true,
+    origin: [
+      'https://your-frontend.vercel.app',
+      'https://shoe-store-backend-o3b4.onrender.com'
+    ],
+    credentials: true,
   },
+},
+
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
