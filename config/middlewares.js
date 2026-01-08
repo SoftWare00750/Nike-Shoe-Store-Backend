@@ -1,4 +1,5 @@
 module.exports = [
+  'strapi::logger',
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -6,17 +7,19 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:', 'http://localhost:1337'],
+          'connect-src': ["'self'", 'https:'],
           'img-src': [
             "'self'",
             'data:',
             'blob:',
+            'dl.airtable.com',
             'res.cloudinary.com',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
+            'dl.airtable.com',
             'res.cloudinary.com',
           ],
           upgradeInsecureRequests: null,
@@ -24,20 +27,8 @@ module.exports = [
       },
     },
   },
- {
-  name: 'strapi::cors',
-  config: {
-    enabled: true,
-    origin: [
-      'https://your-frontend.vercel.app',
-      'https://shoe-store-backend-o3b4.onrender.com'
-    ],
-    credentials: true,
-  },
-},
-
+  'strapi::cors',
   'strapi::poweredBy',
-  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',
